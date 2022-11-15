@@ -79,7 +79,7 @@ static CGFloat const PKRecordButtonWidth = 90;
     toolbar.barTintColor = [UIColor blackColor];
     toolbar.translucent = NO;
     [self.view addSubview:toolbar];
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelShoot)];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelShoot)];
     cancelItem.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -103,7 +103,7 @@ static CGFloat const PKRecordButtonWidth = 90;
     [self.view addSubview:self.progressBar];
     
     self.recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.recordButton setTitle:@"按住录" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"Hold To Record" forState:UIControlStateNormal];
     [self.recordButton setTitleColor:self.themeColor forState:UIControlStateNormal];
     self.recordButton.titleLabel.font = [UIFont systemFontOfSize:17.0f];
     self.recordButton.frame = CGRectMake(0, 0, PKRecordButtonWidth, PKRecordButtonWidth);
