@@ -103,7 +103,7 @@ static CGFloat const PKRecordButtonWidth = 90;
     [self.view addSubview:self.progressBar];
     
     self.recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.recordButton setTitle:@"Hold To Record" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"Hold" forState:UIControlStateNormal];
     [self.recordButton setTitleColor:self.themeColor forState:UIControlStateNormal];
     self.recordButton.titleLabel.font = [UIFont systemFontOfSize:17.0f];
     self.recordButton.frame = CGRectMake(0, 0, PKRecordButtonWidth, PKRecordButtonWidth);
@@ -159,7 +159,7 @@ static CGFloat const PKRecordButtonWidth = 90;
 
 - (void)refreshView {
     [[NSFileManager defaultManager] removeItemAtPath:self.outputFilePath error:nil];
-    [self.recordButton setTitle:@"按住录" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"Hold" forState:UIControlStateNormal];
 
     [self recordButtonAction ];
     [self.playButton removeFromSuperview];
@@ -201,12 +201,12 @@ static CGFloat const PKRecordButtonWidth = 90;
 - (void)endRecordingWithPath:(NSString *)path failture:(BOOL)failture {
     [self.progressBar restore];
 
-    [self.recordButton setTitle:@"按住拍摄" forState:UIControlStateNormal];
+    [self.recordButton setTitle:@"Hold" forState:UIControlStateNormal];
     
     if (failture) {
-        [PKRecordShortVideoViewController showAlertViewWithText:@"生成视频失败"];
+        [PKRecordShortVideoViewController showAlertViewWithText:@"Faild"];
     } else {
-        [PKRecordShortVideoViewController showAlertViewWithText:[NSString stringWithFormat:@"请长按超过%@秒钟",@(self.videoMinimumDuration)]];
+        [PKRecordShortVideoViewController showAlertViewWithText:[NSString stringWithFormat:@"Please hold more than %@ second",@(self.videoMinimumDuration)]];
     }
     
     [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
@@ -214,7 +214,7 @@ static CGFloat const PKRecordButtonWidth = 90;
 }
 
 + (void)showAlertViewWithText:(NSString *)text {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"录制小视频失败" message:text delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Failed" message:text delegate:nil cancelButtonTitle:@"Confirm" otherButtonTitles:nil];
     [alertView show];
 }
 
@@ -259,7 +259,7 @@ static CGFloat const PKRecordButtonWidth = 90;
             [self endRecordingWithPath:outputFilePath failture:NO];
         } else {
             self.outputFilePath = outputFilePath;
-            [self.recordButton setTitle:@"发送" forState:UIControlStateNormal];
+            [self.recordButton setTitle:@"Send" forState:UIControlStateNormal];
             
             self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
             self.playButton.tintColor = self.themeColor;
